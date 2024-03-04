@@ -1,0 +1,47 @@
+type Mutation{
+    #Mutation User
+    guardarUsuario(usuario: CrearUser):User,
+    eliminarUsuario(id:Long) : String
+    #Mutation Project
+    actualizarProducto(id:String,productoRequest:ProductoRequest):Producto,
+    eliminarProducto(id : String) : String
+}
+
+type Query{
+    #Query User
+    listarUsuario : [User],
+    listarUsuarioPorId(id : Long) : User,
+
+    listarCategorias : [Categoria],
+    listarCategoriaPorId(id : Float) : Categoria
+}
+
+type User{
+    id : Long,
+    username : String,
+    email : String,
+    Proyects : [Proyect]
+}
+    
+type Proyect{
+    id : Long,
+    nombre : String,
+    creado: User,
+    tasks : [Task]
+}
+
+
+type Task{
+    id : Long,
+    titulo : String,
+    descripcion : String,
+    project: project
+    asignado: User
+}
+
+
+input CrearUser{
+    username : String,
+    email: String,
+}
+
